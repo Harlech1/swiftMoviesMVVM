@@ -7,7 +7,7 @@
 
 import UIKit
 
-class FirstVC: UIViewController {
+class ListVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

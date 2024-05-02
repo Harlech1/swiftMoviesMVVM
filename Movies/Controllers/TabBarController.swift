@@ -16,11 +16,11 @@ class TabBarController: UITabBarController {
     }
 
     private func setupTabBar() {
-        let firstVC = FirstVC()
+        let firstVC = ListVC()
         firstVC.title = "First"
         firstVC.tabBarItem.image = UIImage(systemName: "heart")
 
-        let secondVC = SecondVC()
+        let secondVC = BookmarksVC()
         secondVC.title = "Second"
         secondVC.tabBarItem.image = UIImage(systemName: "heart")
 

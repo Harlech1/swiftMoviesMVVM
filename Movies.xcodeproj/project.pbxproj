@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		D126EE502BE29685001DBD0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE4F2BE29685001DBD0E /* AppDelegate.swift */; };
 		D126EE522BE29685001DBD0E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE512BE29685001DBD0E /* SceneDelegate.swift */; };
-		D126EE542BE29685001DBD0E /* FirstVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE532BE29685001DBD0E /* FirstVC.swift */; };
+		D126EE542BE29685001DBD0E /* ListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE532BE29685001DBD0E /* ListVC.swift */; };
 		D126EE592BE29687001DBD0E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D126EE582BE29687001DBD0E /* Assets.xcassets */; };
 		D126EE8A2BE396D5001DBD0E /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE892BE396D5001DBD0E /* TabBarController.swift */; };
-		D126EE8C2BE396EB001DBD0E /* SecondVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE8B2BE396EB001DBD0E /* SecondVC.swift */; };
+		D126EE8C2BE396EB001DBD0E /* BookmarksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE8B2BE396EB001DBD0E /* BookmarksVC.swift */; };
+		D126EE902BE3A093001DBD0E /* SplashVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D126EE8F2BE3A093001DBD0E /* SplashVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D126EE4C2BE29685001DBD0E /* Movies.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Movies.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D126EE4F2BE29685001DBD0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D126EE512BE29685001DBD0E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D126EE532BE29685001DBD0E /* FirstVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstVC.swift; sourceTree = "<group>"; };
+		D126EE532BE29685001DBD0E /* ListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListVC.swift; sourceTree = "<group>"; };
 		D126EE582BE29687001DBD0E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D126EE5D2BE29687001DBD0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D126EE892BE396D5001DBD0E /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		D126EE8B2BE396EB001DBD0E /* SecondVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondVC.swift; sourceTree = "<group>"; };
+		D126EE8B2BE396EB001DBD0E /* BookmarksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksVC.swift; sourceTree = "<group>"; };
+		D126EE8F2BE3A093001DBD0E /* SplashVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,40 @@
 		D126EE4E2BE29685001DBD0E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				D126EE4F2BE29685001DBD0E /* AppDelegate.swift */,
-				D126EE512BE29685001DBD0E /* SceneDelegate.swift */,
-				D126EE892BE396D5001DBD0E /* TabBarController.swift */,
-				D126EE532BE29685001DBD0E /* FirstVC.swift */,
-				D126EE8B2BE396EB001DBD0E /* SecondVC.swift */,
-				D126EE582BE29687001DBD0E /* Assets.xcassets */,
-				D126EE5D2BE29687001DBD0E /* Info.plist */,
+				D126EE8D2BE3989D001DBD0E /* App */,
+				D126EE912BE3A0C7001DBD0E /* Controllers */,
+				D126EE8E2BE398AC001DBD0E /* Resources */,
 			);
 			path = Movies;
+			sourceTree = "<group>";
+		};
+		D126EE8D2BE3989D001DBD0E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				D126EE4F2BE29685001DBD0E /* AppDelegate.swift */,
+				D126EE512BE29685001DBD0E /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		D126EE8E2BE398AC001DBD0E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D126EE5D2BE29687001DBD0E /* Info.plist */,
+				D126EE582BE29687001DBD0E /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D126EE912BE3A0C7001DBD0E /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D126EE532BE29685001DBD0E /* ListVC.swift */,
+				D126EE8B2BE396EB001DBD0E /* BookmarksVC.swift */,
+				D126EE8F2BE3A093001DBD0E /* SplashVC.swift */,
+				D126EE892BE396D5001DBD0E /* TabBarController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,11 +163,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D126EE542BE29685001DBD0E /* FirstVC.swift in Sources */,
-				D126EE8C2BE396EB001DBD0E /* SecondVC.swift in Sources */,
+				D126EE542BE29685001DBD0E /* ListVC.swift in Sources */,
+				D126EE8C2BE396EB001DBD0E /* BookmarksVC.swift in Sources */,
 				D126EE8A2BE396D5001DBD0E /* TabBarController.swift in Sources */,
 				D126EE502BE29685001DBD0E /* AppDelegate.swift in Sources */,
 				D126EE522BE29685001DBD0E /* SceneDelegate.swift in Sources */,
+				D126EE902BE3A093001DBD0E /* SplashVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -275,7 +303,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8NLR5UAY6K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = Movies/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -306,7 +334,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 8NLR5UAY6K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Movies/Info.plist;
+				INFOPLIST_FILE = Movies/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
