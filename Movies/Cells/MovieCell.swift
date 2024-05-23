@@ -13,7 +13,8 @@ class MovieCell: UITableViewCell {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.cornerRadius = 16
         return imageView
     }()
 
@@ -30,7 +31,11 @@ class MovieCell: UITableViewCell {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 20)
-        label.backgroundColor = UIColor.black.withAlphaComponent(0.05)
+        label.layer.shadowColor = UIColor.black.cgColor
+        label.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
+        label.layer.shadowOpacity = 1
+        label.layer.shadowRadius = 2.0
+        label.layer.masksToBounds = false
         label.textAlignment = .center
         return label
     }()
@@ -40,8 +45,13 @@ class MovieCell: UITableViewCell {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.contentVerticalAlignment = .fill
         button.contentHorizontalAlignment = .fill
-        button.tintColor = UIColor.placeholderText
-        button.setImage(UIImage(systemName: "heart"), for: .normal)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        button.layer.shadowOpacity = 0.7
+        button.layer.shadowRadius = 1.0
+        button.layer.masksToBounds = false
+        button.layer.cornerRadius = 15
+        //button.tintColor = .gra
         return button
     }()
 
@@ -74,19 +84,20 @@ class MovieCell: UITableViewCell {
             movieBackgroundImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             movieBackgroundImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
 
-            movieImageView.topAnchor.constraint(equalTo: movieBackgroundImageView.topAnchor, constant: 8),
-            movieImageView.leadingAnchor.constraint(equalTo: movieBackgroundImageView.leadingAnchor, constant: 8),
-            movieImageView.trailingAnchor.constraint(equalTo: movieBackgroundImageView.trailingAnchor, constant: -8),
+            movieImageView.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+            movieImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            movieImageView.widthAnchor.constraint(equalToConstant: 200),
+            movieImageView.heightAnchor.constraint(equalToConstant: 300),
 
             movieTitleLabel.topAnchor.constraint(equalTo: movieImageView.bottomAnchor, constant: 8),
-            movieTitleLabel.leadingAnchor.constraint(equalTo: movieBackgroundImageView.leadingAnchor, constant: 8),
-            movieTitleLabel.trailingAnchor.constraint(equalTo: movieBackgroundImageView.trailingAnchor, constant: 8),
-            movieTitleLabel.bottomAnchor.constraint(equalTo: movieBackgroundImageView.bottomAnchor, constant: -8),
+            movieTitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 8),
+            movieTitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8),
+            movieTitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
 
-            bookmarkButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            bookmarkButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            bookmarkButton.heightAnchor.constraint(equalToConstant: 50),
-            bookmarkButton.widthAnchor.constraint(equalToConstant: 50)
+            bookmarkButton.topAnchor.constraint(equalTo: topAnchor, constant: 16),
+            bookmarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            bookmarkButton.heightAnchor.constraint(equalToConstant: 30),
+            bookmarkButton.widthAnchor.constraint(equalToConstant: 30)
         ])
     }
 
@@ -98,8 +109,9 @@ class MovieCell: UITableViewCell {
             bookmarkButton.tintColor = .systemRed
         } else {
             bookmarkButton.setImage(UIImage(systemName: "heart"), for: .normal)
-            bookmarkButton.tintColor = .placeholderText
+            bookmarkButton.tintColor = .white
         }
+        
         let posterURL = URL(string: "https://image.tmdb.org/t/p/w500\(movie.poster_path)")
         let backdropURL = URL(string: "https://image.tmdb.org/t/p/w500\(movie.backdrop_path ?? "")")
 
