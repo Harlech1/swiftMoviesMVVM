@@ -7,7 +7,8 @@
 
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarController: UITabBarController, DataDelegate, UITableViewDelegate {
+    private var recievedData: Data?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,14 +18,36 @@ class TabBarController: UITabBarController {
 
     private func setupTabBar() {
         let firstVC = ListVC()
-        firstVC.title = "First"
-        firstVC.tabBarItem.image = UIImage(systemName: "heart")
+        let firstNavigationController = UINavigationController(rootViewController: firstVC)
+        firstVC.title = "Movies"
+        firstVC.tabBarItem = UITabBarItem(title: "Movies", image: UIImage(systemName: "list.bullet.clipboard"), tag: 0)
 
         let secondVC = BookmarksVC()
-        secondVC.title = "Second"
-        secondVC.tabBarItem.image = UIImage(systemName: "heart")
+        let secondNavigationController = UINavigationController(rootViewController: secondVC)
+        secondVC.title = "Bookmarks"
+        secondVC.tabBarItem = UITabBarItem(title: "Bookmarks", image: UIImage(systemName: "bookmark"), tag: 1)
 
-        self.viewControllers = [firstVC, secondVC]
+        self.viewControllers = [firstNavigationController, secondNavigationController]
     }
 
+    func didFetchMovies(data: Data) {
+        recievedData = data
+        decodeAndAddMovies(data: data)
+    }
+
+    private func decodeAndAddMovies(data: Data) {
+        do {
+            struct Response: Codable {
+                let results: [Movie]
+            }
+
+            let response = try JSONDecoder().decode(Response.self, from: data)
+            let movies = response.results
+            for movie in movies {
+                MovieManager.shared.addMovie(movie)
+            }
+        } catch {
+            print("JSON çevrimi başarısız: \(error.localizedDescription)")
+        }
+    }
 }
