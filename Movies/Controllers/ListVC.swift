@@ -8,7 +8,11 @@
 import UIKit
 import Kingfisher
 
-class ListVC: UIViewController, UITableViewDelegate {
+protocol FilterDelegate: AnyObject {
+    func didSelectGenres(_ genres: [String])
+}
+
+class ListVC: UIViewController, UITableViewDelegate, FilterDelegate {
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -28,7 +32,8 @@ class ListVC: UIViewController, UITableViewDelegate {
 
     private let movies = MovieManager.shared.getAllMovies()
     private let filters: [Genre] = Genre.allCases
-    private lazy var filteredMovies: [Movie] = movies
+    private lazy var searchFilteredMovies: [Movie] = movies
+    private lazy var genreFilteredMovies: [Movie] = movies
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,34 +68,55 @@ class ListVC: UIViewController, UITableViewDelegate {
     }
 
     private func setupFilterButton() {
-        let filterButton = UIBarButtonItem(title: "Filter", style: .plain, target: self, action: #selector(showPopup))
+        let filterImage = UIImage(systemName: "line.horizontal.3.decrease.circle")
+        let filterButton = UIBarButtonItem(image: filterImage, style: .plain, target: self, action: #selector(navigateToFilterVC))
         navigationItem.rightBarButtonItem = filterButton
     }
 
-    @objc private func showPopup() {
-//        let popupView = FilterView(frame: CGRect(x: 50, y: 100, width: view.frame.width - 100, height: view.frame.height - 200))
-//        view.addSubview(popupView)
+    @objc private func navigateToFilterVC() {
+        let filterVC = FilterVC()
+        filterVC.delegate = self
+        navigationController?.pushViewController(filterVC, animated: true)
     }
+
+    private func filterMovies(by genres: [String]) {
+        if genres.isEmpty {
+            genreFilteredMovies = movies
+        } else {
+            genreFilteredMovies = movies.filter { movie in
+                let movieGenreIDs = movie.genre_ids
+                let movieGenres = movieGenreIDs.compactMap { Genre(rawValue: $0)?.description }
+                return !Set(movieGenres).isDisjoint(with: genres)
+            }
+        }
+        filterMovies(with: searchController.searchBar.text ?? "")
+    }
+
 
     private func filterMovies(with searchText: String) {
         if searchText.isEmpty {
-            filteredMovies = movies
+            searchFilteredMovies = genreFilteredMovies
         } else {
-            filteredMovies = movies.filter { $0.title.lowercased().contains(searchText.lowercased()) }
+            searchFilteredMovies = genreFilteredMovies.filter { $0.title.lowercased().contains(searchText.lowercased()) }
         }
         tableView.reloadData()
+    }
+
+
+    func didSelectGenres(_ genres: [String]) {
+        filterMovies(by: genres)
     }
 }
 
 extension ListVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return filteredMovies.count
+        return searchFilteredMovies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieCell", for: indexPath) as? MovieCell else { return MovieCell() }
 
-        let movie = filteredMovies[indexPath.row]
+        let movie = searchFilteredMovies[indexPath.row]
         cell.configure(movie: movie)
 
         let isBookmarked = cell.isBookmarked
@@ -114,7 +140,7 @@ extension ListVC: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let detailVC = DetailsVC()
-        detailVC.selectedMovie = filteredMovies[indexPath.row]
+        detailVC.selectedMovie = searchFilteredMovies[indexPath.row]
         navigationController?.pushViewController(detailVC, animated: true)
     }
 }
