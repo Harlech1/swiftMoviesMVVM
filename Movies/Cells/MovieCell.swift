@@ -51,7 +51,6 @@ class MovieCell: UITableViewCell {
         button.layer.shadowRadius = 1.0
         button.layer.masksToBounds = false
         button.layer.cornerRadius = 15
-        //button.tintColor = .gra
         return button
     }()
 

@@ -197,7 +197,6 @@ class DetailsVC: UIViewController {
         genresLabel.text = "Genres: \(genresDescription)"
     }
 
-
     private func setupOriginalLangLabel() {
         let langCode = LanguageFlag(rawValue: selectedMovie?.original_language ?? "unknown") ?? .unknown
         originalLangLabel.text = "Original Language: \(langCode.flagEmoji)"

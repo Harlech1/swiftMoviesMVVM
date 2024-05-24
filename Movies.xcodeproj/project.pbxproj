@@ -21,8 +21,8 @@
 		D13321292BF65BAF008DC80B /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = D13321282BF65BAF008DC80B /* Kingfisher */; };
 		D133212B2BF777C1008DC80B /* DetailsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133212A2BF777C1008DC80B /* DetailsVC.swift */; };
 		D133212E2BF8C3D4008DC80B /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = D133212D2BF8C3D4008DC80B /* Enums.swift */; };
-		D13321322BF8F60B008DC80B /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13321312BF8F60B008DC80B /* FilterView.swift */; };
 		D13321342BF8F94F008DC80B /* BookmarkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D13321332BF8F94F008DC80B /* BookmarkManager.swift */; };
+		D1E5FD1D2BFF8E4900E55DAD /* FilterVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D1E5FD1C2BFF8E4900E55DAD /* FilterVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,8 +41,8 @@
 		D13321252BF64883008DC80B /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
 		D133212A2BF777C1008DC80B /* DetailsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsVC.swift; sourceTree = "<group>"; };
 		D133212D2BF8C3D4008DC80B /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
-		D13321312BF8F60B008DC80B /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		D13321332BF8F94F008DC80B /* BookmarkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkManager.swift; sourceTree = "<group>"; };
+		D1E5FD1C2BFF8E4900E55DAD /* FilterVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +76,6 @@
 		D126EE4E2BE29685001DBD0E /* Movies */ = {
 			isa = PBXGroup;
 			children = (
-				D13321312BF8F60B008DC80B /* FilterView.swift */,
 				D126EE8D2BE3989D001DBD0E /* App */,
 				D13321222BF63BB1008DC80B /* Cells */,
 				D133212C2BF8C3C7008DC80B /* Constants */,
@@ -115,6 +114,7 @@
 				D126EE532BE29685001DBD0E /* ListVC.swift */,
 				D126EE8F2BE3A093001DBD0E /* SplashVC.swift */,
 				D126EE892BE396D5001DBD0E /* TabBarController.swift */,
+				D1E5FD1C2BFF8E4900E55DAD /* FilterVC.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -235,7 +235,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D13321322BF8F60B008DC80B /* FilterView.swift in Sources */,
+				D1E5FD1D2BFF8E4900E55DAD /* FilterVC.swift in Sources */,
 				D126EE932BE3B54B001DBD0E /* Model.swift in Sources */,
 				D13321342BF8F94F008DC80B /* BookmarkManager.swift in Sources */,
 				D126EE542BE29685001DBD0E /* ListVC.swift in Sources */,
